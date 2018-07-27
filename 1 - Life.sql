@@ -34,6 +34,26 @@ BEGIN
 END
 GO
 
+CREATE FUNCTION [Life].[CountNeighbours] (
+    @GameId INT,
+    @X INT,
+    @Y INT
+) RETURNS INT
+BEGIN
+    DECLARE @result INT
+    -- X,Y neighbours
+    SELECT @result = SUM(StateId) FROM Life.Map 
+    WHERE 
+	   (
+		  (X=@X-1 AND Y=@Y-1) OR (X=@X AND Y=@Y-1) OR (X=@X+1 AND Y=@Y-1) OR
+		  (X=@X-1 AND Y=@Y) OR  (X=@X+1 AND Y=@Y) OR
+		  (X=@X-1 AND Y=@Y+1) OR (X=@X AND Y=@Y+1) OR (X=@X+1 AND Y=@Y+1)
+	   ) AND GameId=@GameId;
+
+	   RETURN @result;
+END
+GO
+		     
 CREATE PROCEDURE [Life].[IterateGame]
     @GameId INT
 AS 
