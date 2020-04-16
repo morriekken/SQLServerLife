@@ -8,6 +8,6 @@ Files in this repo
 
 1 - Life.sql - contains source code for whole solution
 
-2 - InitializeSimpleGlider.sql - initilizes empty 20x20 board and create simple glider in left top corner
+2 - InitializeSimpleGlider.sql - initilizes empty 20x20 board and creates simple glider in left top corner
 
 3 - RunGame.sql - this script will show current state of a game and iterate through the game. You need to run multiple times to see game progress
